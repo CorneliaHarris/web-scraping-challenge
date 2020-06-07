@@ -12,7 +12,7 @@ from splinter.exceptions import ElementDoesNotExist
 def scrape_mars():
 
     executable_path = {"executable_path": "chromedriver.exe"}
-    browser = Browser("chrome", **executable_path, headless=True)
+    browser = Browser("chrome", **executable_path, headless=False)
 
     # URL of page to be scraped
     url = "https://mars.nasa.gov/news/"
@@ -60,7 +60,8 @@ def scrape_mars():
     mars_facts_df
 
     browser.visit(
-        'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced & k1=target & v1=Mars')
+        'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
+
     time.sleep(10)
 
     results = []
@@ -77,7 +78,7 @@ def scrape_mars():
         'main_title': main_title,
         'title_para': title_para,
         'img_url': img_url,
-        'results': results,
+        'results': result,
         'mars_facts_df': mars_facts_df.to_html()
 
     }
