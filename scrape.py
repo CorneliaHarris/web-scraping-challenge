@@ -12,7 +12,7 @@ from splinter.exceptions import ElementDoesNotExist
 def scrape_mars():
 
     executable_path = {"executable_path": "chromedriver.exe"}
-    browser = Browser("chrome", **executable_path, headless=True)
+    browser = Browser("chrome", **executable_path, headless=False)
 
     # URL of page to be scraped
     url = "https://mars.nasa.gov/news/"
